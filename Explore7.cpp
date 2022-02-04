@@ -56,6 +56,7 @@ int main() {
     a.end.x = b.end.x * -1;
     a.end.y = b.end.y * -1;
     cout << "Line a";
+    a.start.x = 30;
     PrintLine(a);
     return 0;
 }
