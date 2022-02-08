@@ -44,9 +44,23 @@ Pet readPetFromFile(ifstream &file) {
 
 int main() {
     ifstream petFile("pets.txt");
+    Pet pets[5];
+    int number = 0;
     while(petFile.peek() != EOF) {
-        Pet a =readPetFromFile(petFile);
-        printPet(a);
-        cout << endl;
+    char c = petFile.get();
+    int index = 0;
+    while(c != ';'  && !petFile.eof() && index < Pet::MAX_NAME_LEN) {
+        pets[number].petName[index] = c;
+        c = petFile.get();
+        index++;
     }
+    pets[number].petName[index] = '\0';
+    petFile >> pets[number].yearsOld;
+    number++;
+    petFile.get();
+}
+for (int i = 4; i >= 0; i--){
+printPet(pets[i]);
+cout << endl;
+}
 }
